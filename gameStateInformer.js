@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const statusText = document.getElementById("game-status");
     const switchBtn = document.getElementById("switch-btn");
-    const allButtons = document.querySelectorAll(".pile button");
+    const allBtns = document.querySelectorAll(".pile button");
     const extraBtnsDiv = document.querySelector(".extra-btns");
 
     function otherPlayer() {
@@ -16,26 +16,26 @@ document.addEventListener("DOMContentLoaded", function() {
         statusText.textContent = message;
     }
 
-    function disableAllPileButtons() {
-        allButtons.forEach(btn => (btn.disabled = true));
+    function disableAllPileBtns() {
+        allBtns.forEach(btn => (btn.disabled = true));
     }
 
     function endGame(gameOverMessage) {
         updateStatus(gameOverMessage);
-        disableAllPileButtons();
+        disableAllPileBtns();
 
         if (switchBtn) {
             switchBtn.disabled = true;
         }
 
-        showResetButton();
+        showResetBtn();
     }
 
-    function checkIfPlayerHasNoMove() {
+    function wasLastStick() {
         const remaining = document.querySelectorAll(".pile button").length;
         if (remaining === 0) {
             // currentPlayer picks last stick => they lose, other player wins
-          const message = `GAMEOVER\nPlayer ${otherPlayer()} wins!`;
+            const message = `GAMEOVER\nPlayer ${otherPlayer()} wins!`;
             endGame(message);
             return true;
         }
@@ -43,14 +43,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function startTurn() {
-        if (checkIfPlayerHasNoMove()) {
+        if (wasLastStick()) {
             return;
         }
         currentPile = null;
         hasMoved = false;
         updateStatus(`Player ${currentPlayer}'s Turn.`);
 
-        
         if (switchBtn) {
             switchBtn.disabled = true;
         }
@@ -58,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function switchTurn() {
         if (!hasMoved) {
-            updateStatus(`remove at least one match before switching turns`);
+            updateStatus(`Remove at least one match before switching turns`);
             return;
         }
         currentPlayer = otherPlayer();
@@ -66,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function onMatchClick(event) {
-        const button = event.target;
-        const clickedPile = button.closest(".pile");
+        const btn = event.target;
+        const clickedPile = btn.closest(".pile");
 
         if (!currentPile) {
             currentPile = clickedPile;
@@ -77,25 +76,23 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        button.remove();
+        btn.remove();
         hasMoved = true;
 
-    
         if (switchBtn) {
             switchBtn.disabled = false;
         }
-
 
         if (clickedPile.querySelectorAll("button").length === 0) {
             clickedPile.remove();
         }
 
-        if (checkIfPlayerHasNoMove()) {
+        if (wasLastStick()) {
             return;
         }
     }
 
-    function showResetButton() {
+    function showResetBtn() {
         if (document.getElementById("reset-btn")) {
             return;
         }
@@ -119,8 +116,8 @@ document.addEventListener("DOMContentLoaded", function() {
         location.reload();
     }
 
-    allButtons.forEach(button => {
-        button.addEventListener("click", onMatchClick);
+    allBtns.forEach(btn => {
+        btn.addEventListener("click", onMatchClick);
     });
 
     if (switchBtn) {
@@ -129,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     startTurn();
 
-    
     if (switchBtn) {
         switchBtn.disabled = true;
     }
