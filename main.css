@@ -1,6 +1,4 @@
-/************************************************
- *  Basic Page Styling
- ************************************************/
+
  body {
     background: url('Images/background.jpg') repeat;
     background-size: cover;
@@ -73,7 +71,7 @@
 }
 
 /************************************************
- *  Button 91 Styles
+ Button 91 Styles
  credit: https://getcssscan.com/css-buttons-examples
  ************************************************/
  
