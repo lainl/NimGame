@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function switchTurn() {
         if (!hasMoved) {
-            updateStatus(`You must remove at least one match before switching turns`);
+            updateStatus(`remove at least one match before switching turns`);
             return;
         }
         currentPlayer = otherPlayer();
