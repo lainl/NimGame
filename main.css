@@ -1,0 +1,131 @@
+/************************************************
+ *  Basic Page Styling
+ ************************************************/
+ body {
+    background: url('Images/background.jpg') repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+#game-status {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1000;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.pile {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pile button {
+    background: url('Images/match.png') no-repeat center;
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.pile button:hover {
+    transform: scale(1.1);
+}
+
+.extra-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: fit-content;
+    position: relative;
+}
+
+.extra-btns button,
+.extra-btns a {
+    width: 150px;
+    text-align: center;
+    position: relative !important;
+}
+
+/************************************************
+ *  Button 91 Styles
+ credit: https://getcssscan.com/css-buttons-examples
+ ************************************************/
+ 
+.button-91 {
+    color: #fff;
+    padding: 15px 25px;
+    background-color: rgba(0, 255, 0, 0.9);
+    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%),
+    radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    box-shadow:
+            inset -3px -3px 9px rgba(255, 255, 255, 0.25),
+            inset 0px 3px 9px rgba(255, 255, 255, 0.3),
+            inset 0px 1px 1px rgba(255, 255, 255, 0.6),
+            inset 0px -8px 36px rgba(0, 0, 0, 0.3),
+            inset 0px 1px 5px rgba(255, 255, 255, 0.6),
+            2px 19px 31px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-91:hover {
+    filter: brightness(1.05);
+    transform: scale(1.02);
+    transition: 0.2s ease;
+}
+
+.button-91:active {
+    transform: scale(0.98);
+}
+
+.home-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.how-to-text {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    right: 25%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: red;
+    font-size: 3rem;
+    font-weight: bold;
+}
