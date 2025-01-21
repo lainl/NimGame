@@ -35,8 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const remaining = document.querySelectorAll(".pile button").length;
         if (remaining === 0) {
             // currentPlayer has no moves left => they lose, other player wins
-            const message = `GAMEOVER
-                `Player ${otherPlayer()} wins!`;
+          const message = `GAMEOVER\nPlayer ${otherPlayer()} wins!`;
             endGame(message);
             return true;
         }
