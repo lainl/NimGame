@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const remaining = document.querySelectorAll(".pile button").length;
         if (remaining === 0) {
             // currentPlayer has no moves left => they lose, other player wins
-            const message = `All piles are empty. Player ${currentPlayer} has no moves and loses!\n` +
+            const message = `GAMEOVER
                 `Player ${otherPlayer()} wins!`;
             endGame(message);
             return true;
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         currentPile = null;
         hasMoved = false;
-        updateStatus(`Player ${currentPlayer}'s Turn. Click a pile to remove matches.`);
+        updateStatus(`Player ${currentPlayer}'s Turn.`);
 
         
         if (switchBtn) {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function switchTurn() {
         if (!hasMoved) {
-            updateStatus(`You must remove at least one match before switching turns.`);
+            updateStatus(`You must remove at least one match before switching turns`);
             return;
         }
         currentPlayer = otherPlayer();
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
             currentPile = clickedPile;
         }
         if (clickedPile !== currentPile) {
-            updateStatus(`You can only remove from one pile this turn!`);
+            updateStatus(`You can only remove from one pile`);
             return;
         }
 
